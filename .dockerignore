@@ -1,0 +1,23 @@
+# Common
+.git
+.gitignore
+.dockerignore
+README.md
+docker-compose.yml
+*.md
+
+# Client
+client/node_modules
+client/build
+client/npm-debug.log
+client/.env
+
+# Server
+server/__pycache__
+server/*.pyc
+server/*.pyo
+server/*.pyd
+server/.env
+server/*.db
+server/*.sqlite3
+server/instance 

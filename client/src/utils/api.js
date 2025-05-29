@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 
 // Create an axios instance with default config
 const api = axios.create({
@@ -9,6 +9,13 @@ const api = axios.create({
     'Content-Type': 'application/json'
   }
 });
+
+// Set default auth token if exists when app loads
+const token = localStorage.getItem('token');
+if (token) {
+  api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
 
 // Add request interceptor to include auth token
 api.interceptors.request.use(

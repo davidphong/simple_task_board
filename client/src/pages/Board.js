@@ -58,13 +58,22 @@ const Board = () => {
       // Fetch all boards
       await getAllBoards();
       
-      // If no boardId, create a new default board or fetch the first board
-      if (!boardId) {
+      // Get current boards list
+      const currentBoards = useBoardStore.getState().boards;
+      
+      // If there are no boards, create a default one
+      if (currentBoards.length === 0) {
         const newBoardId = await createBoard('My First Board', 'My task collection');
         if (newBoardId) {
           navigate(`/board/${newBoardId}`);
         }
-      } else {
+      } 
+      // If there are boards but no boardId is specified, navigate to the first board
+      else if (!boardId && currentBoards.length > 0) {
+        navigate(`/board/${currentBoards[0].id}`);
+      } 
+      // If a boardId is specified, load that board
+      else if (boardId) {
         await getBoard(boardId);
       }
     };

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 
 export const useAuthStore = create((set) => ({
   user: JSON.parse(localStorage.getItem('user')) || null,
@@ -20,6 +20,9 @@ export const useAuthStore = create((set) => ({
       
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
+      
+      // Set the default Authorization header for all future axios requests
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       
       set({ 
         user, 
@@ -61,6 +64,9 @@ export const useAuthStore = create((set) => ({
   logout: () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    
+    // Remove the Authorization header
+    delete axios.defaults.headers.common['Authorization'];
     
     set({ 
       user: null, 
