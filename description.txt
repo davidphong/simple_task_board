@@ -1,0 +1,64 @@
+# My Task Board
+
+## **Requirements**
+
+Create a web page that includes the following elements:
+
+- Create a simple task management application following the given design.
+- By default, users are asked to sign in.
+- On 'Sign In' Page, users can login by username and password.
+- Users can sign up with email and password.
+- After login, logged-in users can view a board with 4 tasks like in the design.
+- Users can edit task name, description, icon, and status.
+- Users can delete tasks by selecting **`Delete`** button.
+- When users select **`Add new task`** option, a new task is added with a default name.
+- Users can edit board name and optionally, users can edit board description as well.
+- When users first login the app, a new board with a unique id is created and saved to the database or alternatively a board is created after users make the first change.
+- Each board can be accessed by a unique id, e.g: /board/:board-id
+- Deploy the solution to localhost.
+
+## **Technical Details**
+
+### **Front-end Development**
+
+1. **Framework**: Use React for building the user interface.
+2. **State Management**: Use a state management tool like Zustand or Redux for managing state.
+3. **Styling**: Use CSS-in-JS libraries like styled-components, tailwind or traditional CSS for styling.
+
+### **Back-end Development**
+ 
+1. **Framework**: use flask python for the server.
+2. **Database**: Use a sqli database 
+
+### **API Endpoints**
+
+1. **POST /api/user/signup**: Create a new user account.
+2. **POST /api/user/login**: Log in with username and password.
+3. **GET /api/boards/:board-id**: Retrieve a board by its ID.
+4. **POST /api/boards**: Create a new board and return the generated ID.
+5. **PUT /api/boards/:board-id**: Update a board by its ID.
+6. **DELETE /api/boards/:board-id**: Delete a board by its ID.
+7. **PUT /api/tasks/:task-id**: Update a task by its ID.
+8. **DELETE /api/tasks/:task-id**: Delete a task by its ID.
+
+### **Default Task Board**
+
+- By default, the task board should have the following columns: "In Progress", "Completed", and "Won't do".
+- Each column should have a default task: "Task in Progress", "Task Completed", and "Task Won't Do".
+- Users can edit the task name, description, icon, and status.
+
+### **Add New Task Functionality**
+
+- When users select the "Add new task" option, a new task is added with a default name.
+- Users can edit the task name, description, icon, and status.
+
+### **Board Management**
+
+- Users can edit the board name and optionally, the board description.
+- When users first login to the app, a new board with a unique id is created and saved to the database. Alternatively, a board is created after users make the first change.
+- Each board can be accessed by a unique id, e.g: /board/:board-id.
+
+### **Deployment**
+
+1. Front-end: Deploy the React app on localhost.
+2. Back-end: Deploy the server on localhost.
